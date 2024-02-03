@@ -1,4 +1,4 @@
-name: create-app
+name: create-repo
 on:
   workflow_dispatch:
     inputs:
@@ -23,8 +23,8 @@ jobs:
     - name: gh auth login
       run: |
         echo ${{ secrets.PERSONAL_ACCESS_TOKEN }} | gh auth login --with-token
-    - name: create-app
-      id: create-app
+    - name: create-repo
+      id: create-repo
       run: |
         gh repo create yyh-action/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
     # Slack 으로 알림 보내기
